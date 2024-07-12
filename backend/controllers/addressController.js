@@ -1,6 +1,6 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const userAddressModels = require("../models/addressModels");
-const ErrorHander = require("../utils/errorHander");
+const errorHandler = require("../Utils/errorHandler");
 
 exports.userAddress = catchAsyncError(async (req, res, next) => {
   req.body.user = req.user.id;
@@ -22,7 +22,7 @@ exports.getuserAddress = catchAsyncError(async (req, res, next) => {
 exports.deleteAddress = catchAsyncError(async (req, res, next) => {
   const userAddress = await userAddressModels.findByIdAndDelete(req.params.id);
   if (!userAddress) {
-    return next(new ErrorHander("Address not found", 404));
+    return next(new errorHandler("Address not found", 404));
   }
   res.status(200).json({
     success: true,
@@ -32,7 +32,7 @@ exports.deleteAddress = catchAsyncError(async (req, res, next) => {
 exports.updateAddress = catchAsyncError(async (req, res, next) => {
   let upAddress = await userAddressModels.findById(req.params.id);
   if (!upAddress) {
-    return next(new ErrorHander("Address not found", 404));
+    return next(new errorHandler("Address not found", 404));
   }
   updatedAddress = await userAddressModels.findByIdAndUpdate(
     req.params.id,

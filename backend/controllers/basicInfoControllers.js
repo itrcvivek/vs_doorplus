@@ -1,6 +1,6 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const userBasicInfo = require("../models/basicInfoModels");
-const ErrorHander = require("../utils/errorHander");
+const errorHandler = require("../Utils/errorHandler");
 
 exports.basicInfo = catchAsyncError(async (req, res, next) => {
   console.log(req.user, "jj");
@@ -21,7 +21,7 @@ exports.getUserBasicInfo = catchAsyncError(async (req, res, next) => {
 exports.deleteBasicInfo = catchAsyncError(async (req, res, next) => {
   const BasicInfo = await userBasicInfo.findByIdAndDelete(req.params.id);
   if (!BasicInfo) {
-    return next(new ErrorHander("Basic Info not found", 404));
+    return next(new errorHandler("Basic Info not found", 404));
   }
   res.status(200).json({
     success: true,
@@ -31,7 +31,7 @@ exports.deleteBasicInfo = catchAsyncError(async (req, res, next) => {
 exports.updateBasicInfo = catchAsyncError(async (req, res, next) => {
   let BasicInfo = await userBasicInfo.findById(req.params.id);
   if (!BasicInfo) {
-    return next(new ErrorHander("Basic Info not found", 404));
+    return next(new errorHandler("Basic Info not found", 404));
   }
   BasicInfo = await userBasicInfo.findByIdAndUpdate(req.params.id, req.body, {
     new: true,

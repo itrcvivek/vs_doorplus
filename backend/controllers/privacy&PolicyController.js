@@ -1,6 +1,6 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const privacyPolicy = require("../models/privacy&PolicyModels");
-const ErrorHander = require("../utils/errorHander");
+const errorHandler = require("../Utils/errorHandler");
 
 exports.privacyPolicy = catchAsyncError(async (req, res, next) => {
   req.body.user = req.user.id;
@@ -22,7 +22,7 @@ exports.updateprivacyPolicy = catchAsyncError(async (req, res, next) => {
   let privacyandPolicy = await privacyPolicy.findById(req.params.id);
   console.log(privacyandPolicy, "jj");
   if (!privacyandPolicy) {
-    return next(new ErrorHander("privacy Policy not found", 404));
+    return next(new errorHandler("privacy Policy not found", 404));
   }
   privacyAndPolicy = await privacyPolicy.findByIdAndUpdate(
     req.params.id,
@@ -41,7 +41,7 @@ exports.updateprivacyPolicy = catchAsyncError(async (req, res, next) => {
 exports.deleteprivacyPolicy = catchAsyncError(async (req, res, next) => {
   const privacyAndPolicy = await privacyPolicy.findByIdAndDelete(req.params.id);
   if (!privacyAndPolicy) {
-    return next(new ErrorHander("privac & Policy not found", 404));
+    return next(new errorHandler("privac & Policy not found", 404));
   }
   res.status(200).json({
     success: true,

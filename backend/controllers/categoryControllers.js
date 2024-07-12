@@ -1,4 +1,4 @@
-const ErrorHander = require("../Utils/errorhander");
+const errorHandler = require("../Utils/errorHandler");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const Features = require("../utils/features");
 const CategoryModel = require("../models/CategoryModels");
@@ -41,7 +41,7 @@ exports.getAllCategory = catchAsyncError(async (req, res, next) => {
   // .pagination(resultPerPage);
   const categories = await apiFeature.query;
   if (!categories) {
-    return next(new ErrorHander("Category not found", 404));
+    return next(new errorHandler("Category not found", 404));
   }
   res.status(200).json({
     success: true,
@@ -97,7 +97,7 @@ exports.deleteCategory = catchAsyncError(async (req, res, next) => {
 // exports.getCategoryDetails = catchAsyncError(async (req, res, next) => {
 //     const category = await CategoryModel.findById(req.params.id);
 //     if (!category) {
-//         return next(new ErrorHander("Category not found", 404));
+//         return next(new errorHandler("Category not found", 404));
 //     }
 //     res.status(200).json({
 //         success: true,

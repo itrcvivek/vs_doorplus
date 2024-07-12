@@ -24,6 +24,10 @@ const blogRoutes = require("./routes/blogRoutes");
 const frequentlyQuestion = require("./routes/FrequentlyQuestionRoutes");
 const booking = require("./routes/BookingRoutes");
 
+app.get("/", (req, res) => {
+    res.send("Hello, World! i m index-js");
+  });
+
 app.use("/api/v1/", user);
 app.use("/api/v1/", category);
 app.use("/api/v1/", subCategory);

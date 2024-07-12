@@ -1,5 +1,5 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
-const ErrorHander = require("../utils/errorHander");
+const errorHandler = require("../Utils/errorHandler");
 const FrequentlyQuestions = require("../models/faqModels")
 
 exports.FrequentlyQuestionsPost = catchAsyncError(async (req, res, next) => {
@@ -66,7 +66,7 @@ exports.updateFrequentlyQuestions = catchAsyncError(async (req, res, next) => {
     let frequentlyQuestion = await FrequentlyQuestions.findById(req.params.id);
   
     if (!frequentlyQuestion) {
-      return next(new ErrorHander("Frequently Question not found", 404));
+      return next(new errorHandler("Frequently Question not found", 404));
     }
   
     frequentlyQuestion = await FrequentlyQuestions.findByIdAndUpdate(
@@ -93,7 +93,7 @@ exports.updateFrequentlyQuestions = catchAsyncError(async (req, res, next) => {
 exports.deleteFrequentlyQuestion = catchAsyncError(async (req, res, next) => {
     const FrequentlyQuestion = await FrequentlyQuestions.findByIdAndDelete(req.params.id);
     if (!FrequentlyQuestion) {
-        return next(new ErrorHander("Frequently Question not found", 404));
+        return next(new errorHandler("Frequently Question not found", 404));
     }
     const totalFrequentlyQuestion = await FrequentlyQuestions.countDocuments()
     res.status(200).json({

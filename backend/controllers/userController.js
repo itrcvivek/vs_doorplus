@@ -1,4 +1,4 @@
-const ErrorHandler = require("../utils/errorHander");
+const errorHandler = require("../Utils/errorHandler");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const User = require("../models/userModels");
 const crypto = require('crypto');
@@ -22,17 +22,17 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
 exports.loginUser = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return next(new ErrorHandler("Please enter email & password", 400));
+    return next(new errorHandler("Please enter email & password", 400));
   }
   
   const user = await User.findOne({ email }).select("+password");
   if (!user) {
-    return next(new ErrorHandler("Invalid email and password", 401));
+    return next(new errorHandler("Invalid email and password", 401));
   }
   
   const isPasswordMatched = await user.comparePassword(password);
   if (!isPasswordMatched) {
-    return next(new ErrorHandler("Invalid email and password", 401));
+    return next(new errorHandler("Invalid email and password", 401));
   }
 
   const parser = new UAParser();
@@ -86,7 +86,7 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
   
 
   if (!user) {
-    return next(new ErrorHandler("User not found", 404));
+    return next(new errorHandler("User not found", 404));
   }
 
   // Get ResetPassword Token
@@ -120,7 +120,7 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 
     await user.save({ validateBeforeSave: false });
 
-    return next(new ErrorHandler(error.message, 500));
+    return next(new errorHandler(error.message, 500));
   }
 });
 
@@ -139,7 +139,7 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
 
   if (!user) {
     return next(
-      new ErrorHandler(
+      new errorHandler(
         "Reset Password Token is invalid or has been expired",
         400
       )
@@ -147,7 +147,7 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
   }
 
   if (req.body.password !== req.body.confirmPassword) {
-    return next(new ErrorHandler("Password does not password", 400));
+    return next(new errorHandler("Password does not password", 400));
   }
 
   user.password = req.body.password;

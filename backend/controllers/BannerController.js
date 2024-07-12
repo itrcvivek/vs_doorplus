@@ -3,7 +3,7 @@ const cloudinary = require("cloudinary");
 const getDataUri = require("../utils/dataUri");
 const BannerModel = require("../models/BannerModel");
 const Features = require("../utils/features");
-const ErrorHander = require("../Utils/errorhander");
+const errorHandler = require("../Utils/errorHandler");
 
 
 // ------bannerCreate post Api------
@@ -36,7 +36,7 @@ exports.getBanner = catchAsyncError(async (req, res, next) => {
   const Banners = await apiFeature.query;
 
   if (!Banners) {
-    return next(new ErrorHander("Banner not found", 404));
+    return next(new errorHandler("Banner not found", 404));
   }
   res.status(200).json({
     success: true,
@@ -86,7 +86,7 @@ exports.BannerDelete = async (req, res, next) => {
     try {
       const banner = await BannerModel.findByIdAndDelete(bannerId);
       if (!banner) {
-        return next(new ErrorHander("Banner not found", 404));
+        return next(new errorHandler("Banner not found", 404));
       }
       res.status(200).json({
         success: true,
