@@ -1,6 +1,6 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const bookingModels = require("../models/bookingModels");
-const errorHandler = require("../Utils/errorHandler");
+const errorHandler = require("../utils/errorHandler");
 
 exports.CreateBooking = catchAsyncError(async (req, res, next) => {
     console.log(req.user, "jjJKJKKJ");

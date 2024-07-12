@@ -1,6 +1,6 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const userAddressModels = require("../models/addressModels");
-const errorHandler = require("../Utils/errorHandler");
+const errorHandler = require("../utils/errorHandler");
 
 exports.userAddress = catchAsyncError(async (req, res, next) => {
   req.body.user = req.user.id;

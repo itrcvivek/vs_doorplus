@@ -1,5 +1,5 @@
-const errorHandler = require("../Utils/errorHandler");
-// import errorHandler from '../Utils/errorHandler';
+const errorHandler = require("../utils/errorHandler");
+// import errorHandler from '../utils/errorHandler';
 
 
 module.exports = (err,req,res,next)=>{

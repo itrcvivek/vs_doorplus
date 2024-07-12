@@ -1,6 +1,6 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const userBasicInfo = require("../models/basicInfoModels");
-const errorHandler = require("../Utils/errorHandler");
+const errorHandler = require("../utils/errorHandler");
 
 exports.basicInfo = catchAsyncError(async (req, res, next) => {
   console.log(req.user, "jj");

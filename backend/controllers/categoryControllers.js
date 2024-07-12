@@ -1,4 +1,4 @@
-const errorHandler = require("../Utils/errorHandler");
+const errorHandler = require("../utils/errorHandler");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const Features = require("../utils/features");
 const CategoryModel = require("../models/CategoryModels");

@@ -3,7 +3,7 @@ const cloudinary = require("cloudinary");
 const getDataUri = require("../utils/dataUri");
 const BannerModel = require("../models/BannerModel");
 const Features = require("../utils/features");
-const errorHandler = require("../Utils/errorHandler");
+const errorHandler = require("../utils/errorHandler");
 
 
 // ------bannerCreate post Api------
