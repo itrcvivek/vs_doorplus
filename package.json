@@ -1,0 +1,47 @@
+{
+  "name": "serviceapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "author": "itrcvivek",
+  "license": "ISC",
+  "dependencies": {
+    "@mui/lab": "^5.0.0-alpha.170",
+    "axios": "^1.6.8",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^2.2.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "datauri": "^4.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.3",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13",
+    "nodemon": "^3.1.0",
+    "react-alert": "^7.0.3",
+    "react-alert-template-basic": "^1.0.2",
+    "react-helmet": "^6.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "socket.io": "^4.7.5",
+    "ua-parser-js": "^1.0.38",
+    "user-agent": "^1.0.4",
+    "validator": "^13.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itrcvivek/vs_doorplus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/itrcvivek/vs_doorplus/issues"
+  },
+  "homepage": "https://github.com/itrcvivek/vs_doorplus#readme"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itrcvivek/vs_doorplus.git"
+  },
+  "author": "itrcvivek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itrcvivek/vs_doorplus/issues"
+  },
+  "homepage": "https://github.com/itrcvivek/vs_doorplus#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
