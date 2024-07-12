@@ -1,6 +1,6 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const subCategoryModel = require("../models/sabCategoryModels");
-const errorHandler = require("../utils/errorHandler");
+const ErrorHandler = require("../utils/errorHandler");
 const cloudinary = require("cloudinary");
 const getDataUri = require("../utils/dataUri");
 
@@ -41,7 +41,7 @@ exports.getAllSubCategory = catchAsyncError(async (req, res, next) => {
 exports.deleteSubCategory = catchAsyncError(async (req, res, next) => {
   const subcategory = await subCategoryModel.findByIdAndDelete(req.params.id);
   if (!subcategory) {
-    return next(new errorHandler("sub Category not found", 404));
+    return next(new ErrorHandler("sub Category not found", 404));
   }
   res.status(200).json({
     success: true,
@@ -52,7 +52,7 @@ exports.deleteSubCategory = catchAsyncError(async (req, res, next) => {
 exports.updateSubCategory = catchAsyncError(async (req, res, next) => {
   let Subcategory = await subCategoryModel.findById(req.params.id);
   if (!Subcategory) {
-    return next(new errorHandler("privacy Policy not found", 404));
+    return next(new ErrorHandler("privacy Policy not found", 404));
   }
   Subcategory = await subCategoryModel.findByIdAndUpdate(
     req.params.id,

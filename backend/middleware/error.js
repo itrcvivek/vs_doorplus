@@ -1,4 +1,4 @@
-import errorHandler from "../utils/errorHandler";
+import ErrorHandler from "../utils/errorHandler";
 // import errorHandler from '../utils/errorHandler';
 
 
@@ -8,7 +8,7 @@ export default (err,req,res,next)=>{
     // wrong mongodb id error
     if(err.name=== "CastError"){
         const message = 'Resource not found. Invaild: $(err.path)';
-        err = new errorHandler(message, 400 );
+        err = new ErrorHandler(message, 400 );
     }
     res.status( err.statusCode).json({
         success:false,
@@ -17,7 +17,7 @@ export default (err,req,res,next)=>{
     // duplicate key error
     if(err.code===11000){
         const message =`Duplicate ${Object.keys(err.keyvalue)} Entered`
-      err= new errorHandler(message,400);
+      err= new ErrorHandler(message,400);
     }
     res.status(err.statusCode).json({
         success:false,
