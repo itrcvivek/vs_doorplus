@@ -1,8 +1,8 @@
-const errorHandler = require("../utils/errorHandler");
+import errorHandler from "../utils/errorHandler";
 // import errorHandler from '../utils/errorHandler';
 
 
-module.exports = (err,req,res,next)=>{
+export default (err,req,res,next)=>{
     err.statusCode =  err.statusCode || 500;
     err.message =  err.message || "server issue";
     // wrong mongodb id error
